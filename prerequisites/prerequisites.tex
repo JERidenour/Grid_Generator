@@ -19,12 +19,12 @@
 
 \maketitle
 
-\section*{Problem Statement}
-Given a digital elevation model (of Earth's surface), we need a domain of point coordinates in three dimensions suitable for solving partial differential equations on.
+\section{Problem Statement}
+Given a digital elevation model (DEM) of Earth's surface, we need a domain of point coordinates in three dimensions suitable for solving partial differential equations on. The domain extends downward from the DEM surface to a user-defined desired depth.
 
-\section*{Requirements}
+\section{Requirements}
 
-\subsection*{Inputs}
+\subsection{Inputs}
 Data to be supplied by the user are: 
 \begin{itemize}
 \item a digital elevation model ($m$ above mean sea level) covering the desired area e.g.\ a GTOPO30 tile, 
@@ -32,12 +32,15 @@ Data to be supplied by the user are:
 \item a desired depth ($m$).
 \end{itemize}
 
-\subsection*{Outputs}
+\subsection{Outputs}
 Data to be output by the program are three tab-delimited .txt files containing the separate $(x, y, z)$-coordinates of a computational grid spanning the longitude and latitude limits and down to the desired depth.
 
-\section*{Architecture}
-\subsection*{Mathematics}
-\subsubsection*{2D Transfinite interpolation}
+\section{Architecture}
+\subsection{Class Descriptions}
+\subsubsection{Point}
+Data members are three doubles that constitute an $(x,y,z)$-coordinate. Public routines are getters, setters, and a \texttt{showCoordinates()} function.
+\subsection{Mathematics}
+\subsubsection{2D Transfinite interpolation}
 \ba{
 x(\xi,\eta) = &(1-\xi)x(0,\eta)+\xi x(1,\eta)+(1-\eta)x(\xi,0)+\eta x(\xi,1)-(1-\eta)(1-\xi)x(0,0)
 \\&-\xi(1-\eta)x(1,0)-(1-\xi)\eta x(0,1)-\eta \xi x(1,1),\\
@@ -45,7 +48,7 @@ x(\xi,\eta) = &(1-\xi)x(0,\eta)+\xi x(1,\eta)+(1-\eta)x(\xi,0)+\eta x(\xi,1)-(1-
 \\&-\xi(1-\eta)y(1,0)-(1-\xi)\eta y(0,1)-\eta \xi y(1,1).
 }
 
-\subsubsection*{3D Transfinite Interpolation}
+\subsubsection{3D Transfinite Interpolation}
 As in \cite{smith}, the formula for 3D transfinite interpolation is as follows:
 \ba{
 U(\xi, \eta, \zeta) = & \ (1-\xi)X(0,\eta, \zeta) + \xi X(1,\eta, \zeta), \\
