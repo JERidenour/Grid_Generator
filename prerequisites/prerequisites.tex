@@ -7,6 +7,7 @@
 \newcommand{\ba}[1]{\begin{align*}    #1    \end{align*}}
 \newcommand{\ban}[1]{\begin{align}    #1    \end{align}}
 \renewcommand{\vec}[1]{\mathbf{#1}}\setlength{\headsep}{1in}
+\renewcommand{\t}[1]{\texttt{#1}}
 \pagestyle{fancy}
 
 \lhead{ridenour@kth.se}
@@ -36,10 +37,21 @@ Data to be supplied by the user are:
 Data to be output by the program are three tab-delimited .txt files containing the separate $(x, y, z)$-coordinates of a computational grid spanning the longitude and latitude limits and down to the desired depth.
 
 \section{Architecture}
+
 \subsection{Class Descriptions}
+
 \subsubsection{Point}
-Data members are three doubles that constitute an $(x,y,z)$-coordinate. Public routines are getters, setters, and a \texttt{showCoordinates()} function.
+Data members are three doubles that constitute an $(x,y,z)$-coordinate. Public routines are getters, setters, and a \texttt{showCoordinate()} function, which displays the coordinate of the point in the terminal.
+
+\subsubsection{Line}
+Data members are an integer size \t{N} indicating the number of points in the line, and \t{coordinates}, a dynamically-allocated (size \t{N}) array of \t{Point} objects. Points are added to the line by means of a function \t{addPoint(int i, Point p)}, which inserts the Point \t{p} into \t{coordinates} at index \t{i} (the first element having index 0). Public routines are \t{addPoint(int i, Point p)} and \t{showCoordinates()}, which displays all the coordinates in the line in the terminal.
+
+\subsubsection{Surface}
+
+\subsubsection{Domain}
+
 \subsection{Mathematics}
+
 \subsubsection{2D Transfinite interpolation}
 \ba{
 x(\xi,\eta) = &(1-\xi)x(0,\eta)+\xi x(1,\eta)+(1-\eta)x(\xi,0)+\eta x(\xi,1)-(1-\eta)(1-\xi)x(0,0)
