@@ -44,9 +44,13 @@ Data to be output by the program are three tab-delimited .txt files containing t
 Data members are three doubles that constitute an $(x,y,z)$-coordinate. Public routines are getters, setters, and a \texttt{showCoordinate()} function, which displays the coordinate of the point in the terminal.
 
 \subsubsection{Line}
-Data members are an integer size \t{N} indicating the number of points in the line, and \t{coordinates}, a dynamically-allocated (size \t{N}) array of \t{Point} objects. Points are added to the line by means of a function \t{addPoint(int i, Point p)}, which inserts the Point \t{p} into \t{coordinates} at index \t{i} (the first element having index 0). Public routines are \t{addPoint(int i, Point p)} and \t{showCoordinates()}, which displays all the coordinates in the line in the terminal.
+Data members are an integer size \t{N} indicating the number of points in the line, a double \t{h} indicating the step size used, and \t{coordinates}, a dynamically-allocated (size \t{N}) array of \t{Point} objects. Points are added to the line by means of a function \t{addPoint(int i, Point p)}, which inserts the Point \t{p} into \t{coordinates} at index \t{i} (the first element having index 0). Public routines are \t{addPoint(int i, Point p)} and \t{showCoordinates()}, which displays all the coordinates in the line in the terminal.
+
+The idea with \t{Line} is to initialise it to a specific length, then fill \t{coordinates} with \t{Point} objects generated from the DEM. 
 
 \subsubsection{Surface}
+
+In contrast to \t{Line}, \t{Surface} is not initialised to size then filled, but rather interpolates its internal points when constructed, given four boundary \t{Line} objects.
 
 \subsubsection{Domain}
 

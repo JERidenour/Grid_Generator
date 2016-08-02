@@ -79,16 +79,52 @@ void Line::showCoords(){
 
 }
 
+class Surface {
+
+    public:
+        Surface();
+        ~Surface();
+        Surface(Line boundNorth, Line boundSouth, Line boundEast, Line boundWest);
+        
+
+};
+
 int main(){
 
-    Point a = Point(0.0, 0.0, 0.0);
-    Point b = Point(1.1, 1.1, 1.1);
-    
-    Line l = Line(2);
-    l.setCoordinate(0, a);
-    l.setCoordinate(1, b);
-    l.showCoords();
+    Line boundSouth = Line(4);
+    Line boundNorth = Line(4);
+    Line boundEast = Line(4);
+    Line boundWest = Line(4);
+    Point p;
+    double hx = 1.0;
+    double hy = 1.0;
 
+    for(int i=0; i<4; i++){
+
+        p.setCoords(i*hx, 0, 0);
+        boundSouth.setCoordinate(i, p);
+
+        p.setCoords(i*hx, 3, 0);
+        boundNorth.setCoordinate(i, p);
+
+        p.setCoords(3, i*hy, 0);
+        boundEast.setCoordinate(i, p);
+
+        p.setCoords(0, i*hy, 0);
+        boundWest.setCoordinate(i, p);
+    }
+
+    cout << "boundSouth: " << endl;
+    boundSouth.showCoords();
+    
+    cout << "boundNorth: " << endl;
+    boundNorth.showCoords();
+    
+    cout << "boundEast: " << endl;
+    boundEast.showCoords();
+    
+    cout << "boundWest: " << endl;
+    boundWest.showCoords();
     
 
     return 0;
