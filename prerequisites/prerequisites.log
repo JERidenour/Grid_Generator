@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.8.24)  2 AUG 2016 14:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.8.24)  3 AUG 2016 16:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -167,19 +167,40 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
  [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (13.02386pt too wide) in paragraph at lines 65--65
+Overfull \hbox (2.59326pt too wide) in paragraph at lines 61--62
+\OT1/cmtt/m/n/10 printCoordinatesToFile(string filename) \OT1/cmr/m/n/10 rou-ti
+ne which prints the $(\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 )$-
+ []
+
+
+Overfull \hbox (30.66582pt too wide) in paragraph at lines 61--62
+\OT1/cmr/m/n/10 coordinates of the sur-face to three sep-a-rate files called \O
+T1/cmtt/m/n/10 filenameX.txt\OT1/cmr/m/n/10 , \OT1/cmtt/m/n/10 filenameY.txt\OT
+1/cmr/m/n/10 ,
+ []
+
+
+Overfull \hbox (6.77399pt too wide) in paragraph at lines 65--66
+\OT1/cmr/m/n/10 face), and \OT1/cmtt/m/n/10 coordinates \OT1/cmr/m/n/10 is now 
+of size \OT1/cmtt/m/n/10 vertN $\OMS/cmsy/m/n/10 ^^B$ \OT1/cmtt/m/n/10 horzN $\
+OMS/cmsy/m/n/10 ^^B$ \OT1/cmtt/m/n/10 radN\OT1/cmr/m/n/10 . The \OT1/cmtt/m/n/1
+0 interpolate()
+ []
+
+
+Overfull \hbox (13.02386pt too wide) in paragraph at lines 78--78
 [] 
  []
 
 [2] [3] (./prerequisites.aux) ) 
 Here is how much of TeX's memory you used:
- 1356 strings out of 493117
- 15405 string characters out of 6135433
- 75483 words of memory out of 5000000
- 4840 multiletter control sequences out of 15000+600000
+ 1359 strings out of 493117
+ 15444 string characters out of 6135433
+ 76483 words of memory out of 5000000
+ 4843 multiletter control sequences out of 15000+600000
  12017 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,11n,45p,575b,204s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,11n,45p,435b,204s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
@@ -190,7 +211,7 @@ amsfonts/cm/cmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt10.pfb>
-Output written on prerequisites.pdf (3 pages, 113041 bytes).
+Output written on prerequisites.pdf (3 pages, 116230 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  35 compressed objects within 1 object stream
