@@ -40,29 +40,48 @@ Data to be output by the program are three tab-delimited .txt files containing t
 
 \subsection{Class Descriptions}
 
+%\subsubsection{Point}
+%Data members are three doubles that constitute an $(x,y,z)$-coordinate. 
+%
+%Public routines are getters, setters, and a \texttt{showCoordinate()} function, which displays the coordinate of the point in the terminal.
+%
+%\subsubsection{Line}
+%Data members are an integer size \t{N} indicating the number of points in the line, a double \t{h} indicating the step size used, and \t{coordinates}, a dynamically-allocated (size \t{N}) array of \t{Point} objects. Points are added to the line by means of a function \t{addPoint(int i, Point p)}, which inserts the Point \t{p} into \t{coordinates} at index \t{i} (the first element having index 0). 
+%
+%Public routines are \t{addPoint(int i, Point p)} and \t{showCoordinates()}, which displays all the coordinates in the line in the terminal.
+%
+%The idea with \t{Line} is to initialise it to a specific length, then fill \t{coordinates} with \t{Point} objects generated from the DEM. 
+%
+%\subsubsection{Surface}
+%
+%In contrast to \t{Line}, \t{Surface} is not initialised to size then filled, but rather interpolates its internal points when constructed, given four boundary \t{Line} objects.
+%
+%Data members are \t{vertN} and \t{horzN}, the step sizes in each dimension, the $(\xi, \eta, \zeta)$ constants needed for interpolation (see Section \ref{sec:Mathematics}), and a dynamically-allocated (size \t{vertN} $\times$ \t{horzN}) array of \t{Point} objects. 
+%
+%Routines are getters and setters along with an \t{interpolate()}, which accomplishes 2D transfinite interpolation (see Section \ref{sec:2Dtfi}). Also included is a \t{printCoordinatesToFile(string filename)} routine which prints the $(x,y,z)$-coordinates of the surface to three separate files called \t{filenameX.txt}, \t{filenameY.txt}, etc. 
+%
+%\subsubsection{Domain}
+%
+%The \t{Domain} class is the three-dimensional extension of the \t{Surface} class. A \t{radN} data member is included for the radial step size (outward from Earth's surface), and \t{coordinates} is now of size \t{vertN} $\times$ \t{horzN} $\times$ \t{radN}. The \t{interpolate()} routine now accomplishes 3D transfinite interpolation, as discussed in Section \ref{sec:3Dtfi}.
+
+\subsubsection{Domain}
+The \t{Domain} class is the base class for the 1-, 2-, and 3-dimensional domains from which the \t{Line}, \t{Surface}, and \t{Grid} classes inherit their common functions and data members: numerical constants \t{Nx}, \t{Ny}, and \t{Nz} (number of array elements (\t{Point} objects) on corresponding sides of the grid block), \t{xi}, \t{eta}, and \t{zeta} (interpolation constants, see Section \ref{sec:Mathematics}), and dynamically allocated arrays of \t{Point} objects for coordinates and corner points. 
+
+Routines include getters and setters, \t{showCoordinates()} (virtual) for printing the coordinates of a domain to the terminal, and \t{printCoordinates()} (virtual) for printing the coordinates to file. The $(x,y,z)$-coordinates of the domains are printed to three separate files called \t{filenameX.txt}, \t{filenameY.txt}, etc.
+
+\subsubsection{Grid}
+This is the 3-dimensional domain which is the goal of this program.  The \t{Grid} object defines a 6-sided computational domain in curvilinear coordinates. The \t{interpolate()} routine accomplishes 3D transfinite interpolation, as discussed in Section \ref{sec:3Dtfi}. The \t{coordinates} array is of size \t{Nx} $\times$ \t{Ny} $\times$ \t{Nz}, and the \t{corners} array is of size 8.
+
+\subsubsection{Surface}
+This is the 2-dimensional domain which constitutes a boundary for the 3-dimensional domain. The \t{interpolate()} routine accomplishes 2D transfinite interpolation, as discussed in Section \ref{sec:2Dtfi}. The \t{coordinates} array is of size \t{Nx} $\times$ \t{Ny}, and the \t{corners} array is of size 4.
+
+\subsubsection{Line}
+This is the 1-dimensional domain which constitutes a boundary for the 2-dimensional domain. The \t{coordinates} array is of size \t{Nx}, and the \t{corners} array is of size 2. The idea with \t{Line} is to initialise it to a specific length, then fill \t{coordinates} with \t{Point} objects generated from the DEM. 
+
 \subsubsection{Point}
 Data members are three doubles that constitute an $(x,y,z)$-coordinate. 
 
 Public routines are getters, setters, and a \texttt{showCoordinate()} function, which displays the coordinate of the point in the terminal.
-
-\subsubsection{Line}
-Data members are an integer size \t{N} indicating the number of points in the line, a double \t{h} indicating the step size used, and \t{coordinates}, a dynamically-allocated (size \t{N}) array of \t{Point} objects. Points are added to the line by means of a function \t{addPoint(int i, Point p)}, which inserts the Point \t{p} into \t{coordinates} at index \t{i} (the first element having index 0). 
-
-Public routines are \t{addPoint(int i, Point p)} and \t{showCoordinates()}, which displays all the coordinates in the line in the terminal.
-
-The idea with \t{Line} is to initialise it to a specific length, then fill \t{coordinates} with \t{Point} objects generated from the DEM. 
-
-\subsubsection{Surface}
-
-In contrast to \t{Line}, \t{Surface} is not initialised to size then filled, but rather interpolates its internal points when constructed, given four boundary \t{Line} objects.
-
-Data members are \t{vertN} and \t{horzN}, the step sizes in each dimension, the $(\xi, \eta, \zeta)$ constants needed for interpolation (see Section \ref{sec:Mathematics}), and a dynamically-allocated (size \t{vertN} $\times$ \t{horzN}) array of \t{Point} objects. 
-
-Routines are getters and setters along with an \t{interpolate()}, which accomplishes 2D transfinite interpolation (see Section \ref{sec:2Dtfi}). Also included is a \t{printCoordinatesToFile(string filename)} routine which prints the $(x,y,z)$-coordinates of the surface to three separate files called \t{filenameX.txt}, \t{filenameY.txt}, etc. 
-
-\subsubsection{Domain}
-
-The \t{Domain} class is the three-dimensional extension of the \t{Surface} class. A \t{radN} data member is included for the radial step size (outward from Earth's surface), and \t{coordinates} is now of size \t{vertN} $\times$ \t{horzN} $\times$ \t{radN}. The \t{interpolate()} routine now accomplishes 3D transfinite interpolation, as discussed in Section \ref{sec:3Dtfi}.
 
 \subsection{Mathematics}
 \label{sec:Mathematics}

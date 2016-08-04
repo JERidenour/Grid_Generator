@@ -46,10 +46,10 @@ class Domain {
     public:
         Domain();
         ~Domain();
-        virtual void showCoordinates()=0;
+        void showCoordinates();
 
     protected:
-        int Nx, Ny, Nz;
+        int lonN, latN, vertN;
         double xi, eta, zeta;
         Point * coordinates, * corners;
 
@@ -58,30 +58,36 @@ class Domain {
 Domain::Domain(){ coordinates = NULL; corners = NULL;}
 Domain::~Domain(){ delete [] coordinates; delete [] corners;}
 
+void Domain::showCoordinates(){
+
+    for(int i = 0; i < lonN; i++){
+        for(int j = 0; j < latN; j++){
+            for(int k = 0; k < vertN; k++){
+
+            cout << "(" << coordinates[i + (lonN)*j + k*(lonN)*(latN) ].getX() << ", " << coordinates[i + (lonN)*j + k*(lonN)*(latN) ].getY() << ", "  << coordinates[i + (lonN)*j + k*(lonN)*(latN) ].getZ() << ")" << endl;    
+
+            }
+        }
+    }
+}
+
 class Line : public Domain {
 
     public:
         Line(int N);
         void setPoint(int i, Point p_in);
-        void showCoordinates();
+
+
+
 };
-
-void Line::showCoordinates(){
-
-    for(int i = 0; i < Nx; i++){
-
-        cout << "(" << coordinates[i].getX() << ", " << coordinates[i].getY() << ", " << coordinates[i].getZ() << ")" << endl;
-
-    }
-}
 
 Line::Line(int N){
 
     coordinates = new Point[N];
     corners = new Point[2];
-    Nx = N; 
-    Ny = 0;
-    Nz = 0; 
+    lonN = N; //number of points!
+    latN = 0;
+    vertN = 0; 
 
 }
 
@@ -100,6 +106,7 @@ int main(){
     p3.setCoords(2.0, 2.0, 0.0);
     p4.setCoords(3.0, 3.0, 0.0);
     p5.setCoords(4.0, 4.0, 0.0);
+
 
     cout << "initializing Line" << endl;
     Line L = Line(5);   
