@@ -21,38 +21,13 @@ void Point::setPoint(double x_in, double y_in, double z_in){
 
 };
 
-void Point::setX(double x_in){
+void Point::setX(double x_in){x = x_in;};
+void Point::setY(double y_in){y = y_in;};
+void Point::setZ(double z_in){z = z_in;};
 
-        x = x_in;
-
-};
-
-void Point::setY(double y_in){
-
-        y = y_in;
-
-};
-
-void Point::setZ(double z_in){
-
-        z = z_in;
-
-};
-
-double Point::getX(){
-
-    return x;
-};
-
-double Point::getY(){
-
-    return y;
-};
-
-double Point::getZ(){
-
-    return z;
-};
+double Point::getX(){return x;};
+double Point::getY(){return y;};
+double Point::getZ(){return z;};
 
 void Point::showPoint(){
 
