@@ -55,8 +55,8 @@ class Domain {
 
 };
 
-Domain::Domain(){ coordinates = NULL; corners = NULL;}
-Domain::~Domain(){ delete [] coordinates; delete [] corners;}
+Domain::Domain(){ coordinates = NULL; corners = NULL;} //set to null pointer if default is called
+Domain::~Domain(){ delete [] coordinates; delete [] corners;} //release dynamic memory
 
 class Line : public Domain {
 
