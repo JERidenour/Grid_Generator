@@ -27,8 +27,10 @@ int main(){
     cout << endl;
     cout << endl;
 
-    Point q = L.getPoint(5);
-    q.showPoint();
+    Line M = Line(L); //copy L to M
+    M.showCoordinates();
+
+    Line O;
 
     return 0;
 }

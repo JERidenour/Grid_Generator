@@ -20,6 +20,22 @@ Line::Line(int N_in){
 
 };
 
+Line::Line(const Line& Line_in){
+
+    Nx = Line_in.Nx;
+    Ny = Line_in.Ny;
+    Nz = Line_in.Nz;
+
+    coordinates = new Point[Nx];
+    for(int i = 0; i < Nx; i++){
+        coordinates[i] = Line_in.coordinates[i];
+    }
+    corners = new Point[2];
+    for(int i = 0; i < 2; i++){
+        corners[i] = Line_in.corners[i];
+    }
+};
+
 Point Line::getPoint(int i){
 
     if( (i<Nx)&&(i>=0) ){

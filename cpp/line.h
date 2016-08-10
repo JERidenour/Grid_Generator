@@ -7,8 +7,14 @@
 class Line : public Domain{
 
     public:
+        //default constructor
+        Line() : Domain(){};
+
         //construct with N_in allocated point slots
         Line(int N_in);
+
+        //copy constructor
+        Line(const Line& Line_in);
     
         //return point at index i
         Point getPoint(int i);
