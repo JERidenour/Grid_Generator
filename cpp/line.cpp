@@ -20,9 +20,25 @@ Line::Line(int N_in){
 
 };
 
-Point Line::getPoint(int i){return coordinates[i];};
+Point Line::getPoint(int i){
 
-void Line::setPoint(int i, Point p_in){coordinates[i]=p_in;};
+    if( (i<Nx)&&(i>=0) ){
+        return coordinates[i];
+    }else{
+        cout << "invalid index at getPoint()" << endl;
+        Point errP = Point(-9999, -9999, -9999);
+        return errP;
+    }
+};
+
+void Line::setPoint(int i, Point p_in){
+
+    if( (i<Nx)&&(i>=0) ){
+        coordinates[i]=p_in;
+    }else{
+        cout << "invalid index at setPoint()" << endl;
+    }
+};
 
 void Line::showCoordinates(){
 
@@ -45,7 +61,6 @@ void Line::printCoordinatesToFile(string filename){
 
     outFile.close();
     
-
 };
 
 void Line::setCorners(){

@@ -24,5 +24,11 @@ int main(){
     L.showCoordinates();
     L.printCoordinatesToFile("testOutput.txt");
 
+    cout << endl;
+    cout << endl;
+
+    Point q = L.getPoint(5);
+    q.showPoint();
+
     return 0;
 }
