@@ -1,6 +1,8 @@
 #ifndef POINT
 #define POINT
 
+#include <string>
+
 class Point{
 
     public:
@@ -21,6 +23,9 @@ class Point{
 
         //display values on terminal
         void showPoint(); 
+
+        //return the coordinates as a string
+        std::string pointAsString();
 
 
     private:

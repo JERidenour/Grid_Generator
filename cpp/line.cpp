@@ -1,6 +1,7 @@
 #include "domain.h"
 #include "line.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -34,13 +35,22 @@ void Line::showCoordinates(){
 
 void Line::printCoordinatesToFile(string filename){
 
-    cout << "printCoordinatesToFile()" << endl;
+    ofstream outFile;
+    outFile.open(filename);
+    for(int i=0; i<Nx; i++){
+
+        outFile << coordinates[i].pointAsString() << "\t";
+
+    }
+
+    outFile.close();
+    
 
 };
 
 void Line::setCorners(){
 
     corners[0] = coordinates[0];
-    corners[1] = coordinates[Nx+1];
+    corners[1] = coordinates[Nx-1];
 
 };

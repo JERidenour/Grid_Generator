@@ -1,5 +1,6 @@
 #include "point.h"
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -35,3 +36,10 @@ void Point::showPoint(){
 
 };
 
+string Point::pointAsString(){
+
+    ostringstream strs;
+    strs << "(" << x << ", " << y << ", " << z << ")";
+    
+    return strs.str();
+};

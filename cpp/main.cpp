@@ -19,7 +19,10 @@ int main(){
 
     } 
 
+
+    L.setCorners();
     L.showCoordinates();
+    L.printCoordinatesToFile("testOutput.txt");
 
     return 0;
 }
