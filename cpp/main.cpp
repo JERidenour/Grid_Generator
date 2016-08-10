@@ -1,20 +1,25 @@
 #include "point.h"
+#include "line.h"
 #include <iostream>
 
 using namespace std;
 
 int main(){
 
-    Point p, q;
-    
-    p.setPoint(0.0, 0.0, 0.0);
-    p.showPoint();
-    
-    q.setX(1.0);
-    q.setY(1.0);
-    q.setZ(1.0);
-    cout << "(" << q.getX() << ", " << q.getY() << ", " << q.getZ() << ")" << endl;
+    int N = 10;
+    double h = 0.1;
 
+    Line L = Line(N);
+    Point p;
+
+    for(int i=0; i<N; i++){
+
+        p.setPoint(0.0 + i*h, 1.0, 2.0);
+        L.setPoint(i, p);
+
+    } 
+
+    L.showCoordinates();
 
     return 0;
 }
