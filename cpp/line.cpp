@@ -34,7 +34,7 @@ Point Line::getPoint(int i){
         return coordinates[i];
     }else{
         cout << "invalid index at getPoint()" << endl;
-        Point errP = Point(-9999, -9999, -9999);
+        Point errP = Point(0.0, 0.0, 0.0);
         return errP;
     }
 };

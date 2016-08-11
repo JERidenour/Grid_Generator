@@ -22,7 +22,7 @@ class Surface : public Domain {
         
     private:
         //implementation of tfi
-        void interpolate();
+        void interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest);
         void setPoint(int i, int j, Point p_in);
 };
 #endif

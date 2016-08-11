@@ -35,20 +35,21 @@ int main(){
         West.setPoint(j, p);
     }
 
-    cout << "North:" << endl;
-    North.showCoordinates();
+//    cout << "North:" << endl;
+//    North.showCoordinates();
 
-    cout << "South:" << endl;
-    South.showCoordinates();
+//    cout << "South:" << endl;
+//    South.showCoordinates();
 
-    cout << "East:" << endl;
-    East.showCoordinates();
+//    cout << "East:" << endl;
+//    East.showCoordinates();
 
-    cout << "West:" << endl;
-    West.showCoordinates();
+//    cout << "West:" << endl;
+//    West.showCoordinates();
 
 
     Surface testSurf = Surface(North, South, East, West);
+    testSurf.showCoordinates();
 
     return 0;
 }
