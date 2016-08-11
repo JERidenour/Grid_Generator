@@ -22,6 +22,9 @@ class Line : public Domain{
         //set point at index i to point p_in
         void setPoint(int i, Point p_in);
 
+        //return the number of elements in the line 
+        int getN();
+
         //show points on terminal
         void showCoordinates();
 

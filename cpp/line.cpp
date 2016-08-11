@@ -56,6 +56,8 @@ void Line::setPoint(int i, Point p_in){
     }
 };
 
+int Line::getN(){return Nx;};
+
 void Line::showCoordinates(){
 
     for(int i=0; i<Nx; i++){
