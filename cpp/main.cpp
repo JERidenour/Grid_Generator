@@ -50,6 +50,7 @@ int main(){
 
     Surface testSurf = Surface(North, South, East, West);
     testSurf.showCoordinates();
+    testSurf.printCoordinatesToFile("testOutput.txt");
 
     return 0;
 }

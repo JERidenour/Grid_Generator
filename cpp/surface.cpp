@@ -65,7 +65,19 @@ void Surface::showCoordinates(){
     }
 
 };
-void Surface::printCoordinatesToFile(string filename){};
+void Surface::printCoordinatesToFile(string filename){
+
+    ofstream outFile;
+    outFile.open(filename);
+    for(int i=0; i<Nx; i++){
+        for(int j=0; j<Ny; j++){
+            outFile << coordinates[i+j*Nx].pointAsString() << "\t";
+        }
+    }
+
+    outFile.close();
+
+};
 void Surface::setPoint(int i, int j, Point p_in){
 
     coordinates[i+j*Nx] = p_in;
