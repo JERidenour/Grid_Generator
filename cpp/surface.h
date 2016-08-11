@@ -24,6 +24,5 @@ class Surface : public Domain {
         //implementation of tfi
         void interpolate();
         void setPoint(int i, int j, Point p_in);
-        void setCorners();
 };
 #endif

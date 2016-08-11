@@ -31,8 +31,5 @@ class Line : public Domain{
         //print coordinates to file filename
         void printCoordinatesToFile(std::string filename);
         
-        //set corner values (for use in interpolation)
-        void setCorners();
-
 };
 #endif

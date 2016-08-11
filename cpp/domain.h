@@ -16,13 +16,11 @@ class Domain{
 
         virtual void showCoordinates()=0;
         virtual void printCoordinatesToFile(std::string filename)=0;
-        virtual void setCorners()=0;
-
 
     protected:
         int Nx, Ny, Nz;
         double xi, eta, zeta;
-        Point * coordinates, * corners;
+        Point * coordinates;
 
         void setXi(double xi_in);
         void setEta(double eta_in);

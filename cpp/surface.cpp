@@ -14,19 +14,13 @@ Surface::Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boun
 
     //allocate coordinates array of Nx*Ny elements
     coordinates = new Point[Nx*Ny];
- 
-    //allocate corners array of 4 elements
-    //(Surface objects always have 4 and only 4 corners)
-    corners = new Point[4];
-    setCorners();
     
     //fill the coordinates with interpolation
     interpolate();
 };
 
 Point Surface::getPoint(int i, int j){
-    Point p = Point(0.0, 0.0, 0.0);
-    return p;
+    return coordinates[i + Nx*j];
 };
 
 void Surface::interpolate(){
@@ -38,5 +32,4 @@ void Surface::interpolate(){
 
 void Surface::showCoordinates(){};
 void Surface::printCoordinatesToFile(string filename){};
-void Surface::setCorners(){};
 void Surface::setPoint(int i, int j, Point p_in){};

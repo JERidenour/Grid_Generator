@@ -7,7 +7,6 @@ Domain::Domain(){
 
     //default constructor initializes pointers to NULL
     coordinates = NULL;
-    corners = NULL;
 
 };
 
@@ -15,8 +14,6 @@ Domain::~Domain(){
 
     //destructor releases dynamically-allocated memory
     delete [] coordinates;
-    delete [] corners;
-
 };
 
 void Domain::setNx(double N_in){Nx = N_in;};

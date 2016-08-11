@@ -14,10 +14,6 @@ Line::Line(int N_in){
     //allocate coordinates array of Nx elements
     coordinates = new Point[N_in];
 
-    //allocate corners array of 2 elements
-    //(Line objects always have 2 and only 2 corners)
-    corners = new Point[2]; 
-
 };
 
 Line::Line(const Line& Line_in){
@@ -29,10 +25,6 @@ Line::Line(const Line& Line_in){
     coordinates = new Point[Nx];
     for(int i = 0; i < Nx; i++){
         coordinates[i] = Line_in.coordinates[i];
-    }
-    corners = new Point[2];
-    for(int i = 0; i < 2; i++){
-        corners[i] = Line_in.corners[i];
     }
 };
 
@@ -79,11 +71,4 @@ void Line::printCoordinatesToFile(string filename){
 
     outFile.close();
     
-};
-
-void Line::setCorners(){
-
-    corners[0] = coordinates[0];
-    corners[1] = coordinates[Nx-1];
-
 };
