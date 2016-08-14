@@ -23,6 +23,9 @@ Point Surface::getPoint(int i, int j){
     return coordinates[i + Nx*j];
 };
 
+int Surface::getNx(){return Nx;};
+int Surface::getNy(){return Ny;};
+
 void Surface::interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest){
 
     for(int i=0; i<Nx; i++){

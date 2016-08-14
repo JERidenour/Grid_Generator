@@ -17,6 +17,8 @@ class Surface : public Domain {
         //copy constructor
 
         Point getPoint(int i, int j);
+        int getNx();
+        int getNy();
         void showCoordinates();
         void printCoordinatesToFile(std::string filename);
         
