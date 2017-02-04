@@ -74,7 +74,7 @@ void Surface::printCoordinatesToFile(string filename){
     outFile.open(filename);
     for(int i=0; i<Nx; i++){
         for(int j=0; j<Ny; j++){
-            outFile << coordinates[i+j*Nx].pointAsString() << "\t";
+            outFile << coordinates[i+j*Nx].pointAsString() << "\n";
         }
     }
 

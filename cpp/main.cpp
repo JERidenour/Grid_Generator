@@ -7,17 +7,20 @@ using namespace std;
 
 int main(){
 
+    //set numerical constants
     int Nx = 15;
     int Ny = 5;
     double hx = 0.5;
     double hy = 1.0;
 
+    //initialize datatypes
     Point p;
     Line North = Line(Nx); 
     Line South = Line(Nx); 
     Line East = Line(Ny); 
     Line West = Line(Ny); 
 
+    //fill the lines with points
     for(int i = 0; i < Nx; i++){
 
         p.setPoint( (double)i*hx, 4, 0);
@@ -48,9 +51,14 @@ int main(){
 //    West.showCoordinates();
 
 
+    //initialize surface
     Surface testSurf = Surface(North, South, East, West);
+
+    //display the surface points in the terminal
     testSurf.showCoordinates();
-    testSurf.printCoordinatesToFile("testOutput.txt");
+
+    //write the points to file
+    testSurf.printCoordinatesToFile("../viz/testOutput.txt");
 
     return 0;
 }
