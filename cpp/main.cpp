@@ -9,56 +9,41 @@ int main(){
 
     //set numerical constants
     int Nx = 15;
-    int Ny = 5;
+    int Ny = 15;
     double hx = 0.5;
-    double hy = 1.0;
+    double hy = 0.5;
 
     //initialize datatypes
     Point p;
-    Line North = Line(Nx); 
-    Line South = Line(Nx); 
-    Line East = Line(Ny); 
-    Line West = Line(Ny); 
+    Line line_1 = Line(Nx); 
+    Line line_2 = Line(Ny); 
+    Line line_3 = Line(Nx); 
+    Line line_4 = Line(Ny); 
 
     //fill the lines with points
     for(int i = 0; i < Nx; i++){
 
         p.setPoint( (double)i*hx, 4, 0);
-        North.setPoint(i, p);
+        line_1.setPoint(i, p);
 
         p.setPoint( (double)i*hx, 0, 0);
-        South.setPoint(i, p);
+        line_3.setPoint(i, p);
     }
     for(int j = 0; j < Ny; j++){
 
         p.setPoint( 7, (double)j*hy, 0);
-        East.setPoint(j, p);
+        line_2.setPoint(j, p);
 
         p.setPoint(0, (double)j*hy, 0);
-        West.setPoint(j, p);
+        line_4.setPoint(j, p);
     }
-
-//    cout << "North:" << endl;
-//    North.showCoordinates();
-
-//    cout << "South:" << endl;
-//    South.showCoordinates();
-
-//    cout << "East:" << endl;
-//    East.showCoordinates();
-
-//    cout << "West:" << endl;
-//    West.showCoordinates();
 
 
     //initialize surface
-    Surface testSurf = Surface(North, South, East, West);
-
-    //display the surface points in the terminal
-    testSurf.showCoordinates();
+    Surface surf_1 = Surface(line_3, line_1, line_2, line_4);
 
     //write the points to file
-    testSurf.printCoordinatesToFile("../viz/testOutput.txt");
+    surf_1.printCoordinatesToFile("../viz/surf_1.txt");
 
     return 0;
 }
