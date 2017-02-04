@@ -39,7 +39,7 @@ void Point::showPoint(){
 string Point::pointAsString(){
 
     ostringstream strs;
-    strs <<  x << "\t" << y << "\t" << z << "\t";
+    strs <<  x << "\t" << y << "\t" << z;
     
     return strs.str();
 };
