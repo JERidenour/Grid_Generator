@@ -40,10 +40,18 @@ int main(){
 
 
     //initialize surface
-    Surface surf_1 = Surface(line_3, line_1, line_2, line_4);
+    int norm_1 = 0;
+    int norm_2 = 1;
+    int norm_3 = 2;
+
+    Surface surf_1 = Surface(line_3, line_1, line_2, line_4, norm_1);
+    Surface surf_2 = Surface(line_3, line_1, line_2, line_4, norm_2);
+    Surface surf_3 = Surface(line_3, line_1, line_2, line_4, norm_3);
 
     //write the points to file
     surf_1.printCoordinatesToFile("../viz/surf_1.txt");
+    surf_2.printCoordinatesToFile("../viz/surf_2.txt");
+    surf_3.printCoordinatesToFile("../viz/surf_3.txt");
 
     return 0;
 }

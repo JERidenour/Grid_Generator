@@ -28,6 +28,9 @@ int Surface::getNy(){return Ny;};
 
 void Surface::interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm){
 
+    cout << "the norm is:" << endl;
+    cout << norm << endl;
+
     for(int i=0; i<Nx; i++){
         for(int j=0; j<Ny; j++){
 
@@ -54,16 +57,14 @@ void Surface::interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, L
 
             Point p = Point();
 
-
-
             if (norm == 0) {
-                p.setPoint(z, y, x);
+                p.setPoint(y, z, x);
             }
             if (norm == 1) {
-                p.setPoint(x, z, y);
+                p.setPoint(y, z, x);
             }
             if (norm == 2) {
-                p.setPoint(x, y, z);
+                p.setPoint(y, z, x);
             }
             setPoint(i, j, p);
 
