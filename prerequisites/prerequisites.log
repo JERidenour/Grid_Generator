@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.8.24)  5 AUG 2016 11:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.8.24)  11 FEB 2017 12:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -167,7 +167,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
  [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (13.02386pt too wide) in paragraph at lines 97--97
+Overfull \hbox (13.02386pt too wide) in paragraph at lines 75--75
 [] 
  []
 
@@ -175,11 +175,11 @@ Overfull \hbox (13.02386pt too wide) in paragraph at lines 97--97
 Here is how much of TeX's memory you used:
  1359 strings out of 493117
  15444 string characters out of 6135433
- 76483 words of memory out of 5000000
+ 75483 words of memory out of 5000000
  4843 multiletter control sequences out of 15000+600000
  12017 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,11n,45p,543b,204s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,11n,45p,543b,206s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
@@ -190,7 +190,7 @@ amsfonts/cm/cmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt10.pfb>
-Output written on prerequisites.pdf (3 pages, 116734 bytes).
+Output written on prerequisites.pdf (3 pages, 117223 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  35 compressed objects within 1 object stream
