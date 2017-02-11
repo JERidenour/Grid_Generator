@@ -25,6 +25,9 @@ class Line : public Domain{
         //return the number of elements in the line 
         int getN();
 
+        //project points onto the (x,y)-plane
+        Line project(int &norm);
+
         //show points on terminal
         void showCoordinates();
 

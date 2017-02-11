@@ -50,6 +50,38 @@ void Line::setPoint(int i, Point p_in){
 
 int Line::getN(){return Nx;};
 
+Line Line::project(int &norm){
+
+    Point p;
+    Line outLine = Line(Nx);
+
+    if(norm == 0){
+        for(int i=0; i<Nx; i++){
+
+            p.setPoint( coordinates[i].getY(), coordinates[i].getZ(), coordinates[i].getX() );
+            outLine.setPoint(i, p);
+
+        }
+    }
+    if(norm == 1){
+        for(int i=0; i<Nx; i++){
+
+            p.setPoint( coordinates[i].getX(), coordinates[i].getZ(), coordinates[i].getY() );
+            outLine.setPoint(i, p);
+
+        }
+    }
+    if(norm == 2){
+        for(int i=0; i<Nx; i++){
+
+            p.setPoint( coordinates[i].getX(), coordinates[i].getY(), coordinates[i].getZ() );
+            outLine.setPoint(i, p);
+
+        }
+    }
+    return outLine;
+};
+
 void Line::showCoordinates(){
 
     for(int i=0; i<Nx; i++){

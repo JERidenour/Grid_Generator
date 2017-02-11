@@ -14,9 +14,15 @@ Surface::Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boun
 
     //allocate coordinates array of Nx*Ny elements
     coordinates = new Point[Nx*Ny];
-    
+
+    //project surface to the (x,y)-plane
+    Line bNorth = boundSouth.project(norm);    
+    Line bSouth = boundNorth.project(norm);    
+    Line bEast = boundWest.project(norm);    
+    Line bWest = boundEast.project(norm);    
+
     //fill the coordinates with interpolation
-    interpolate(boundNorth, boundSouth, boundEast, boundWest, norm, zConst);
+    interpolate(bNorth, bSouth, bEast, bWest, norm, zConst);
 };
 
 Point Surface::getPoint(int i, int j){

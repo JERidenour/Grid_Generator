@@ -86,8 +86,6 @@ int main(){
 
     }
 
-    line_1.showCoordinates();
-
     //initialize surface
     int norm_1 = 1;
     int norm_2 = 0;
@@ -99,19 +97,19 @@ int main(){
     //Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, 
     //        int &norm, double &zConst)
     Surface surf_1 = Surface(line_9, line_1, line_6, line_5, norm_1, z1);
-    //Surface surf_2 = Surface(line_10, line_2, line_6, line_7, norm_2, z2);
-    //Surface surf_3 = Surface(line_11, line_3, line_7, line_8, norm_3, z3);
-    //Surface surf_4 = Surface(line_12, line_4, line_5, line_8, norm_4, z4);
-    //Surface surf_5 = Surface(line_1, line_3, line_2, line_4, norm_5, z5);
-    //Surface surf_6 = Surface(line_9, line_11, line_10, line_12, norm_6, z6);
+    Surface surf_2 = Surface(line_10, line_2, line_6, line_7, norm_2, z2);
+    Surface surf_3 = Surface(line_11, line_3, line_7, line_8, norm_3, z3);
+    Surface surf_4 = Surface(line_12, line_4, line_5, line_8, norm_4, z4);
+    Surface surf_5 = Surface(line_1, line_3, line_2, line_4, norm_5, z5);
+    Surface surf_6 = Surface(line_9, line_11, line_10, line_12, norm_6, z6);
 
     //write the points to file
     surf_1.printCoordinatesToFile("../viz/surf_1.txt");
-    //surf_2.printCoordinatesToFile("../viz/surf_2.txt");
-    //surf_3.printCoordinatesToFile("../viz/surf_3.txt");
-    //surf_4.printCoordinatesToFile("../viz/surf_4.txt");
-    //surf_5.printCoordinatesToFile("../viz/surf_5.txt");
-    //surf_6.printCoordinatesToFile("../viz/surf_6.txt");
+    surf_2.printCoordinatesToFile("../viz/surf_2.txt");
+    surf_3.printCoordinatesToFile("../viz/surf_3.txt");
+    surf_4.printCoordinatesToFile("../viz/surf_4.txt");
+    surf_5.printCoordinatesToFile("../viz/surf_5.txt");
+    surf_6.printCoordinatesToFile("../viz/surf_6.txt");
 
     return 0;
 }
