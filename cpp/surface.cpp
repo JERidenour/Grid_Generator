@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Surface::Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm){
+Surface::Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst){
 
     Nx = boundSouth.getN();
     Ny = boundWest.getN();
@@ -16,7 +16,7 @@ Surface::Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boun
     coordinates = new Point[Nx*Ny];
     
     //fill the coordinates with interpolation
-    interpolate(boundNorth, boundSouth, boundEast, boundWest, norm);
+    interpolate(boundNorth, boundSouth, boundEast, boundWest, norm, zConst);
 };
 
 Point Surface::getPoint(int i, int j){
@@ -26,7 +26,7 @@ Point Surface::getPoint(int i, int j){
 int Surface::getNx(){return Nx;};
 int Surface::getNy(){return Ny;};
 
-void Surface::interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm){
+void Surface::interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst){
 
     for(int i=0; i<Nx; i++){
         for(int j=0; j<Ny; j++){
@@ -50,12 +50,9 @@ void Surface::interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, L
                 - eta*(1-xi)*boundNorth.getPoint(0).getY()
                 - eta*xi*boundNorth.getPoint(Nx-1).getY();
 
-            z = 0;
+            z = zConst;
 
             Point p = Point();
-
-
-
             if (norm == 0) {
                 p.setPoint(z, y, x);
             }

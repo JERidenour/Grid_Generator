@@ -12,7 +12,7 @@ class Surface : public Domain {
         Surface() : Domain(){};
     
         //constructor with four Line object arguments (by reference)
-        Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm);
+        Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst);
 
         //copy constructor
 
@@ -24,7 +24,7 @@ class Surface : public Domain {
         
     private:
         //implementation of tfi
-        void interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm);
+        void interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst);
         void setPoint(int i, int j, Point p_in);
 };
 #endif
