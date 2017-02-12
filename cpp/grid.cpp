@@ -78,7 +78,7 @@ void Grid::interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundE
                 eta = j/( (double) Ny-1);
                 zeta = k/( (double) Nz-1);
 
-                double x, y, z;
+
 
                 U_X[i+j*Nx+k*Nx*Ny] = (1-xi)*boundWest.getPoint(j,k).getX() + 
                                       xi*boundEast.getPoint(j,k).getX();
@@ -98,23 +98,117 @@ void Grid::interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundE
                                        xi*eta*boundEast.getWest()->getPoint(k).getX();
 
                 VW_X[i+j*Nx+k*Nx*Ny] = (1-zeta)*(1-eta)*boundFront.getSouth()->getPoint(i).getX() + 
-                                       eta*(1-zeta)*boundFront.getNorth()->getPoint(i).getX() + 
-                                       zeta*(1-eta)*boundBack.getSouth()->getPoint(i).getX() + 
+                                       zeta*(1-eta)*boundFront.getNorth()->getPoint(i).getX() + 
+                                       eta*(1-zeta)*boundBack.getSouth()->getPoint(i).getX() + 
                                        zeta*eta*boundBack.getNorth()->getPoint(i).getX();
                
-                //UVW_X[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-eta)*(1-zeta)*c_1(1) + 
-                //                       (1-xi)*(1-eta)*zeta*c_5(1) + 
-            //                        (1-xi)*eta*(1-zeta)*c_4(1) + 
-            //                           xi*(1-eta)*(1-zeta)*c_2(1) +
-            //                           (1-xi)*eta*zeta*c_8(1) + 
-            //                           xi*(1-eta)*zeta*c_6(1) +
-            //                           (1-zeta)*xi*eta*c_3(1) + 
-            //                           xi*eta*zeta*c_7(1); 
+                UVW_X[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-eta)*(1-zeta)*boundFront.getSouthWestCorner().getX() + 
+                                       (1-xi)*(1-eta)*zeta*boundFront.getNorthWestCorner().getX() + 
+                                       (1-xi)*eta*(1-zeta)*boundBack.getSouthWestCorner().getX() + 
+                                       xi*(1-eta)*(1-zeta)*boundFront.getSouthEastCorner().getX() +
+                                       (1-xi)*eta*zeta*boundBack.getNorthWestCorner().getX() +
+                                       xi*(1-eta)*zeta*boundFront.getNorthEastCorner().getX()  +
+                                       (1-zeta)*xi*eta*boundBack.getSouthEastCorner().getX() + 
+                                       xi*eta*zeta*boundBack.getNorthEastCorner().getX();
 
  
+                U_Y[i+j*Nx+k*Nx*Ny] = (1-xi)*boundWest.getPoint(j,k).getY() + 
+                                      xi*boundEast.getPoint(j,k).getY();
+                V_Y[i+j*Nx+k*Nx*Ny] = (1-eta)*boundFront.getPoint(i,k).getY() +
+                                       eta*boundBack.getPoint(i,k).getY();
+                W_Y[i+j*Nx+k*Nx*Ny] = (1-zeta)*boundSouth.getPoint(i,j).getY() +
+                                       zeta*boundNorth.getPoint(i,j).getY();
+
+                UW_Y[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-zeta)*boundWest.getSouth()->getPoint(j).getY() + 
+                                       zeta*(1-xi)*boundWest.getNorth()->getPoint(j).getY() + 
+                                       xi*(1-zeta)*boundEast.getSouth()->getPoint(j).getY() + 
+                                       xi*zeta*boundEast.getNorth()->getPoint(j).getY();
+
+                UV_Y[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-eta)*boundWest.getEast()->getPoint(k).getY() + 
+                                       eta*(1-xi)*boundWest.getWest()->getPoint(k).getY() + 
+                                       xi*(1-eta)*boundEast.getEast()->getPoint(k).getY() + 
+                                       xi*eta*boundEast.getWest()->getPoint(k).getY();
+
+                VW_Y[i+j*Nx+k*Nx*Ny] = (1-zeta)*(1-eta)*boundFront.getSouth()->getPoint(i).getY() + 
+                                       zeta*(1-eta)*boundFront.getNorth()->getPoint(i).getY() + 
+                                       eta*(1-zeta)*boundBack.getSouth()->getPoint(i).getY() + 
+                                       zeta*eta*boundBack.getNorth()->getPoint(i).getY();
+               
+                UVW_Y[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-eta)*(1-zeta)*boundFront.getSouthWestCorner().getY() + 
+                                       (1-xi)*(1-eta)*zeta*boundFront.getNorthWestCorner().getY() + 
+                                       (1-xi)*eta*(1-zeta)*boundBack.getSouthWestCorner().getY() + 
+                                       xi*(1-eta)*(1-zeta)*boundFront.getSouthEastCorner().getY() +
+                                       (1-xi)*eta*zeta*boundBack.getNorthWestCorner().getY() +
+                                       xi*(1-eta)*zeta*boundFront.getNorthEastCorner().getY()  +
+                                       (1-zeta)*xi*eta*boundBack.getSouthEastCorner().getY() + 
+                                       xi*eta*zeta*boundBack.getNorthEastCorner().getY();
+
+
+                U_Z[i+j*Nx+k*Nx*Ny] = (1-xi)*boundWest.getPoint(j,k).getZ() + 
+                                      xi*boundEast.getPoint(j,k).getZ();
+                V_Z[i+j*Nx+k*Nx*Ny] = (1-eta)*boundFront.getPoint(i,k).getZ() +
+                                       eta*boundBack.getPoint(i,k).getZ();
+                W_Z[i+j*Nx+k*Nx*Ny] = (1-zeta)*boundSouth.getPoint(i,j).getZ() +
+                                       zeta*boundNorth.getPoint(i,j).getZ();
+
+                UW_Z[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-zeta)*boundWest.getSouth()->getPoint(j).getZ() + 
+                                       zeta*(1-xi)*boundWest.getNorth()->getPoint(j).getZ() + 
+                                       xi*(1-zeta)*boundEast.getSouth()->getPoint(j).getZ() + 
+                                       xi*zeta*boundEast.getNorth()->getPoint(j).getZ();
+
+                UV_Z[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-eta)*boundWest.getEast()->getPoint(k).getZ() + 
+                                       eta*(1-xi)*boundWest.getWest()->getPoint(k).getZ() + 
+                                       xi*(1-eta)*boundEast.getEast()->getPoint(k).getZ() + 
+                                       xi*eta*boundEast.getWest()->getPoint(k).getZ();
+
+                VW_Z[i+j*Nx+k*Nx*Ny] = (1-zeta)*(1-eta)*boundFront.getSouth()->getPoint(i).getZ() + 
+                                       zeta*(1-eta)*boundFront.getNorth()->getPoint(i).getZ() + 
+                                       eta*(1-zeta)*boundBack.getSouth()->getPoint(i).getZ() + 
+                                       zeta*eta*boundBack.getNorth()->getPoint(i).getZ();
+               
+                UVW_Z[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-eta)*(1-zeta)*boundFront.getSouthWestCorner().getZ() + 
+                                       (1-xi)*(1-eta)*zeta*boundFront.getNorthWestCorner().getZ() + 
+                                       (1-xi)*eta*(1-zeta)*boundBack.getSouthWestCorner().getZ() + 
+                                       xi*(1-eta)*(1-zeta)*boundFront.getSouthEastCorner().getZ() +
+                                       (1-xi)*eta*zeta*boundBack.getNorthWestCorner().getZ() +
+                                       xi*(1-eta)*zeta*boundFront.getNorthEastCorner().getZ()  +
+                                       (1-zeta)*xi*eta*boundBack.getSouthEastCorner().getZ() + 
+                                       xi*eta*zeta*boundBack.getNorthEastCorner().getZ();
+
             }
         }
     } 
+
+    for(int i=0; i<Nx; i++){
+        for(int j=0; j<Ny; j++){
+            for(int k=0; k<Nz; k++){
+
+                double x, y, z;
+
+                x = U_X[i+j*Nx+k*Nx*Ny]  + V_X[i+j*Nx+k*Nx*Ny]  + W_X[i+j*Nx+k*Nx*Ny]  -
+                        UW_X[i+j*Nx+k*Nx*Ny]  - UV_X[i+j*Nx+k*Nx*Ny]  - VW_X[i+j*Nx+k*Nx*Ny]  +
+                        UVW_X[i+j*Nx+k*Nx*Ny] ;
+
+                y = U_Y[i+j*Nx+k*Nx*Ny]  + V_Y[i+j*Nx+k*Nx*Ny]  + W_Y[i+j*Nx+k*Nx*Ny]  -
+                        UW_Y[i+j*Nx+k*Nx*Ny]  - UV_Y[i+j*Nx+k*Nx*Ny]  - VW_Y[i+j*Nx+k*Nx*Ny]  +
+                        UVW_Y[i+j*Nx+k*Nx*Ny] ;
+
+                z = U_Z[i+j*Nx+k*Nx*Ny]  + V_Z[i+j*Nx+k*Nx*Ny]  + W_Z[i+j*Nx+k*Nx*Ny]  -
+                        UW_Z[i+j*Nx+k*Nx*Ny]  - UV_Z[i+j*Nx+k*Nx*Ny]  - VW_Z[i+j*Nx+k*Nx*Ny]  +
+                        UVW_Z[i+j*Nx+k*Nx*Ny] ;
+
+
+                Point p = Point();
+                p.setPoint(x,y,z);
+                setPoint(i, j, k, p);
+
+            }
+        }
+    }
+
+
+
+
     //release help array memory
     delete[] U_X; 
     delete[] V_X; 

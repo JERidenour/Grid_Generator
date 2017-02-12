@@ -126,17 +126,7 @@ int main(){
     //grid(boundNordh, boundSouth, boundEast, boundWest, boundFront, boundBack)
     Grid grid_1 = Grid(surf_6, surf_5, surf_2, surf_4, surf_1, surf_3);
 
-    Point q = surf_1.getSouthWestCorner();
-    q.showPoint();
-    q = surf_1.getSouthEastCorner();
-    q.showPoint();
-    q = surf_1.getNorthWestCorner();
-    q.showPoint();
-    q = surf_1.getNorthEastCorner();
-    q.showPoint();
-
-
-
+    grid_1.printCoordinatesToFile("../viz/grid_1.txt");
 
     cout << "done!" << endl;
 
