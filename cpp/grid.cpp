@@ -87,8 +87,21 @@ void Grid::interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundE
                 W_X[i+j*Nx+k*Nx*Ny] = (1-zeta)*boundSouth.getPoint(i,j).getX() +
                                        zeta*boundNorth.getPoint(i,j).getX();
 
-                //UW_X(i,j,k) = (1-xi)*(1-zeta)*x_4(j) + zeta*(1-xi)*x_12(j) + 
-                //            xi*(1-zeta)*x_2(j) + xi*zeta*x_10(j);
+                UW_X[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-zeta)*boundWest.getSouth()->getPoint(j).getX() + 
+                                       zeta*(1-xi)*boundWest.getNorth()->getPoint(j).getX() + 
+                                       xi*(1-zeta)*boundEast.getSouth()->getPoint(j).getX() + 
+                                       xi*zeta*boundEast.getNorth()->getPoint(j).getX();
+
+                UV_X[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-eta)*boundWest.getEast()->getPoint(k).getX() + 
+                                       eta*(1-xi)*boundWest.getWest()->getPoint(k).getX() + 
+                                       xi*(1-eta)*boundEast.getEast()->getPoint(k).getX() + 
+                                       xi*eta*boundEast.getWest()->getPoint(k).getX();
+
+                VW_X[i+j*Nx+k*Nx*Ny] = (1-zeta)*(1-eta)*boundFront.getSouth()->getPoint(i).getX() + 
+                                       eta*(1-zeta)*boundFront.getNorth()->getPoint(i).getX() + 
+                                       zeta*(1-eta)*boundBack.getSouth()->getPoint(i).getX() + 
+                                       zeta*eta*boundBack.getNorth()->getPoint(i).getX();
+
                 
             }
         }

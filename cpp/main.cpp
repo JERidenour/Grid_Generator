@@ -1,7 +1,7 @@
 #include "point.h"
 #include "line.h"
 #include "surface.h"
-//#include "grid.h"
+#include "grid.h"
 #include <iostream>
 
 using namespace std;
@@ -122,11 +122,11 @@ int main(){
     surf_5.printCoordinatesToFile("../viz/surf_5.txt");
     surf_6.printCoordinatesToFile("../viz/surf_6.txt");
 
-//    cout << "creating 3D grid..." << endl;
+    cout << "creating 3D grid..." << endl;
 
     //create 3D-grid with interior points
     //grid(boundNordh, boundSouth, boundEast, boundWest, boundFront, boundBack)
-//    Grid grid_1 = Grid(surf_6, surf_5, surf_2, surf_4, surf_1, surf_3);
+    Grid grid_1 = Grid(surf_6, surf_5, surf_2, surf_4, surf_1, surf_3);
 
     cout << "done!" << endl;
 
