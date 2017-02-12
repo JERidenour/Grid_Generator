@@ -12,6 +12,11 @@ Surface::Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boun
     Ny = boundWest.getN();
     Nz = 0;
 
+    myNorth = new Line(boundNorth);
+    mySouth = new Line(boundSouth);
+    myEast = new Line(boundEast);
+    myWest = new Line(boundWest);
+
     //allocate coordinates array of Nx*Ny elements
     coordinates = new Point[Nx*Ny];
 
@@ -31,6 +36,11 @@ Point Surface::getPoint(int i, int j){
 
 int Surface::getNx(){return Nx;};
 int Surface::getNy(){return Ny;};
+
+Line * Surface::getNorth(){return myNorth;};
+Line * Surface::getSouth(){return mySouth;};
+Line * Surface::getEast(){return myEast;};
+Line * Surface::getWest(){return myWest;};
 
 void Surface::interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst){
 

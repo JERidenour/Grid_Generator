@@ -19,11 +19,15 @@ class Surface : public Domain {
         Point getPoint(int i, int j);
         int getNx();
         int getNy();
+        Line * getNorth();
+        Line * getSouth();
+        Line * getEast();
+        Line * getWest();
         void showCoordinates();
         void printCoordinatesToFile(std::string filename);
         
     private:
-        //implementation of tfi
+        Line * myNorth, * mySouth, * myEast, * myWest;
         void interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst);
         void setPoint(int i, int j, Point p_in);
 };

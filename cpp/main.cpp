@@ -1,11 +1,14 @@
 #include "point.h"
 #include "line.h"
 #include "surface.h"
+//#include "grid.h"
 #include <iostream>
 
 using namespace std;
 
 int main(){
+
+    cout << "setting constants..." << endl;
 
     //set numerical constants
     //number of points in each direction
@@ -25,6 +28,8 @@ int main(){
     double hx = 1/( (double)Nx - 1 );
     double hy = 1/( (double)Ny - 1 );
     double hz = 1/( (double)Nz - 1 );
+
+    cout << "creating boundary lines..." << endl;
 
     //initialize datatypes
     Point p;
@@ -86,6 +91,8 @@ int main(){
 
     }
 
+    cout << "creating surfaces..." << endl;
+
     //initialize surface
     int norm_1 = 1;
     int norm_2 = 0;
@@ -103,6 +110,10 @@ int main(){
     Surface surf_5 = Surface(line_1, line_3, line_2, line_4, norm_5, z5);
     Surface surf_6 = Surface(line_9, line_11, line_10, line_12, norm_6, z6);
 
+    surf_1.getNorth()->showCoordinates();
+
+    cout << "writing surfaces to file..." << endl;
+
     //write the points to file
     surf_1.printCoordinatesToFile("../viz/surf_1.txt");
     surf_2.printCoordinatesToFile("../viz/surf_2.txt");
@@ -110,6 +121,14 @@ int main(){
     surf_4.printCoordinatesToFile("../viz/surf_4.txt");
     surf_5.printCoordinatesToFile("../viz/surf_5.txt");
     surf_6.printCoordinatesToFile("../viz/surf_6.txt");
+
+//    cout << "creating 3D grid..." << endl;
+
+    //create 3D-grid with interior points
+    //grid(boundNordh, boundSouth, boundEast, boundWest, boundFront, boundBack)
+//    Grid grid_1 = Grid(surf_6, surf_5, surf_2, surf_4, surf_1, surf_3);
+
+    cout << "done!" << endl;
 
     return 0;
 }
