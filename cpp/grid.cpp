@@ -101,8 +101,17 @@ void Grid::interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundE
                                        eta*(1-zeta)*boundFront.getNorth()->getPoint(i).getX() + 
                                        zeta*(1-eta)*boundBack.getSouth()->getPoint(i).getX() + 
                                        zeta*eta*boundBack.getNorth()->getPoint(i).getX();
+               
+                //UVW_X[i+j*Nx+k*Nx*Ny] = (1-xi)*(1-eta)*(1-zeta)*c_1(1) + 
+                //                       (1-xi)*(1-eta)*zeta*c_5(1) + 
+            //                        (1-xi)*eta*(1-zeta)*c_4(1) + 
+            //                           xi*(1-eta)*(1-zeta)*c_2(1) +
+            //                           (1-xi)*eta*zeta*c_8(1) + 
+            //                           xi*(1-eta)*zeta*c_6(1) +
+            //                           (1-zeta)*xi*eta*c_3(1) + 
+            //                           xi*eta*zeta*c_7(1); 
 
-                
+ 
             }
         }
     } 

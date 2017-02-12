@@ -10,11 +10,9 @@ class Surface : public Domain {
     public:
         //default constructor
         Surface() : Domain(){};
-    
+
         //constructor with four Line object arguments (by reference)
         Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst);
-
-        //copy constructor
 
         Point getPoint(int i, int j);
         int getNx();
@@ -23,6 +21,10 @@ class Surface : public Domain {
         Line * getSouth();
         Line * getEast();
         Line * getWest();
+        Point getSouthWestCorner();
+        Point getSouthEastCorner();
+        Point getNorthWestCorner();
+        Point getNorthEastCorner();
         void showCoordinates();
         void printCoordinatesToFile(std::string filename);
         

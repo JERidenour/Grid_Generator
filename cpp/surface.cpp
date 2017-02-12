@@ -21,10 +21,10 @@ Surface::Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boun
     coordinates = new Point[Nx*Ny];
 
     //project surface to the (x,y)-plane
-    Line bNorth = boundSouth.project(norm);    
-    Line bSouth = boundNorth.project(norm);    
-    Line bEast = boundWest.project(norm);    
-    Line bWest = boundEast.project(norm);    
+    Line bNorth = boundNorth.project(norm);    
+    Line bSouth = boundSouth.project(norm);    
+    Line bEast = boundEast.project(norm);    
+    Line bWest = boundWest.project(norm);    
 
     //fill the coordinates with interpolation
     interpolate(bNorth, bSouth, bEast, bWest, norm, zConst);
@@ -41,6 +41,21 @@ Line * Surface::getNorth(){return myNorth;};
 Line * Surface::getSouth(){return mySouth;};
 Line * Surface::getEast(){return myEast;};
 Line * Surface::getWest(){return myWest;};
+
+Point Surface::getNorthWestCorner(){ 
+    return coordinates[ Nx*Ny - Nx ]; 
+};
+Point Surface::getNorthEastCorner(){ 
+    return coordinates[ Nx*Ny-1 ]; 
+};
+Point Surface::getSouthWestCorner(){ 
+    return coordinates[0]; 
+};
+Point Surface::getSouthEastCorner(){ 
+    return coordinates[Nx-1]; 
+};
+
+
 
 void Surface::interpolate(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst){
 
