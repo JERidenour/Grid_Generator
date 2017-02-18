@@ -14,6 +14,9 @@ class Surface : public Domain {
         //constructor with four Line object arguments (by reference)
         Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boundWest, int &norm, double &zConst);
 
+        //create a surface object from a suitably formatted text file
+        Surface(std::string filename, int Nx_in, int Ny_in);
+
         Point getPoint(int i, int j);
         int getNx();
         int getNy();

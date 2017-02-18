@@ -30,6 +30,50 @@ Surface::Surface(Line &boundNorth, Line &boundSouth, Line &boundEast, Line &boun
     interpolate(bNorth, bSouth, bEast, bWest, norm, zConst);
 };
 
+Surface::Surface(string filename, int Nx_in, int Ny_in){
+
+    Nx = Nx_in;
+    Ny = Ny_in;
+
+    //allocate coordinates array of Nx*Ny elements
+    coordinates = new Point[Nx*Ny];
+
+    //fill coordinates from contents of file
+    string line, xs, ys, zs;
+    double x, y, z;
+    string delim = "\t";
+    ifstream myfile(filename);
+    if (myfile.is_open()) {
+
+        //while ( getline (myfile,line) ) {
+        for(int i=0; i<Nx; i++){
+            for(int j=0; j<Ny; j++){
+                getline(myfile, line);
+                size_t pos = 0;
+                string token;
+                pos = line.find(delim);
+                xs = line.substr(0, pos);
+                line.erase(0, pos + delim.length());
+                pos = line.find(delim);
+                ys = line.substr(0, pos);
+                line.erase(0, pos + delim.length());
+                pos = line.find(delim);
+                zs = line.substr(0, pos);
+
+                x = stod(xs);
+                y = stod(ys);
+                z = stod(zs);
+                Point p = Point(x,y,z);
+                setPoint(i,j,p);
+            }
+        }
+        myfile.close();
+    }
+
+  else cout << "Unable to open file"; 
+    
+};
+
 Point Surface::getPoint(int i, int j){
     return coordinates[i + Nx*j];
 };

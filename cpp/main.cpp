@@ -128,7 +128,15 @@ int main(){
 
     grid_1.printCoordinatesToFile("../viz/grid_1.txt");
 
+    cout << "done with first method!" << endl;
+    cout << "attempting second method..." << endl;
+
+    Nx = 51;
+    Ny = 50;
+    Surface surf_top = Surface("../topodata/OROdat.txt", Nx, Ny); 
+    surf_top.printCoordinatesToFile("../viz/surf_top.txt");
     cout << "done!" << endl;
+
 
     return 0;
 }
