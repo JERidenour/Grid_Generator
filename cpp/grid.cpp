@@ -18,16 +18,16 @@ Grid::Grid(Surface &boundNorth, Surface &boundSouth, Surface &boundEast,
     interpolate(boundNorth, boundSouth, boundEast, boundWest, boundFront, boundBack);
 };
 
-Grid::Grid(Surface &boundNorth, int Nz_in, double depth_in){
+Grid::Grid(Surface &boundNorth, int Nz_in){
 
     Nx = boundNorth.getNx();
     Ny = boundNorth.getNy();
     Nz = Nz_in;
-    double depth = depth_in;
 
     coordinates = new Point[Nx*Ny*Nz];
 
-    Surface boundSouth = createSouth(boundNorth, depth);       
+    Surface boundSouth = createSouth(boundNorth);       
+    Surface boundEast = createEast(boundNorth);
 
 //    interpolate(boundNorth, boundSouth, boundEast, boundWest, boundFront, boundBack);
 };
@@ -282,7 +282,7 @@ void Grid::setPoint(int i, int j, int k, Point p_in){
 
 };
 
-Surface Grid::createSouth(Surface &boundNorth, double depth_in){
+Surface Grid::createSouth(Surface &boundNorth){
 
     int norm = 2; //norm is 2 for (x,y)-plane
     double zConst = 0.0;
@@ -311,16 +311,57 @@ Surface Grid::createSouth(Surface &boundNorth, double depth_in){
         bWest.setPoint(j,p);
     }    
 
-    Surface testbottom = Surface(bNorth, bSouth, bEast, bWest, norm, zConst);
+    return Surface(bNorth, bSouth, bEast, bWest, norm, zConst);
+};
+
+Surface Grid::createEast(Surface &boundNorth){
+
+    int norm = 0; //norm is 0 for (y,z)-plane
+    double zConst = boundNorth.getNorthEastCorner().getX(); //with norm 0, the zConst is X or 0
+cout << zConst << endl;
+    //get lines north, south, east, west
+    Line bNorth = Line(Ny); 
+    Line bSouth = Line(Ny);
+    Line bEast = Line(Nz); 
+    Line bWest = Line(Nz);
+  
+    for(int j=0; j<Ny; j++){
+
+        Point p = boundNorth.getEast()->getPoint(j);
+        bNorth.setPoint(j,p); //the north line is simply the edge of the input surface
+
+        p.setZ(0.0);
+        bSouth.setPoint(j,p);
+    }    
+
+    double start1 = boundNorth.getNorthEastCorner().getZ();
+    double start2 = boundNorth.getSouthEastCorner().getZ();
+    double hz1 = start1/((double) Nz);
+    double hz2 = start2/((double) Nz);
+    double xConst1 = boundNorth.getNorthEastCorner().getX();
+    double xConst2 = boundNorth.getSouthEastCorner().getX();
+    double yConst1 = boundNorth.getNorthEastCorner().getY();
+    double yConst2 = boundNorth.getSouthEastCorner().getY();
+
+    for(int k=0; k<Nz; k++){
+
+        Point p;
+        
+        p.setPoint(xConst1, yConst1, (double)k*hz1);
+        bEast.setPoint(k,p);
+
+        p.setPoint(xConst2, yConst2, (double)k*hz2);
+        bWest.setPoint(k,p);
+    }    
+
+    Surface testside = Surface(bNorth, bSouth, bEast, bWest, norm, zConst);
     bNorth.printCoordinatesToFile("../viz/north_linetest.txt");
     bSouth.printCoordinatesToFile("../viz/south_linetest.txt");
     bEast.printCoordinatesToFile("../viz/east_linetest.txt");
     bWest.printCoordinatesToFile("../viz/west_linetest.txt");
-    testbottom.printCoordinatesToFile("../viz/testbottom.txt");
-    boundNorth.printCoordinatesToFile("../viz/testtop.txt");
 
-//return Surface(bNorth, bSouth, bEast, bWest, norm, zConst);
+    testside.printCoordinatesToFile("../viz/testside.txt");
+//    boundNorth.printCoordinatesToFile("../viz/testtop.txt");
 
-    return Surface();
-
+    return Surface(bNorth, bSouth, bEast, bWest, norm, zConst);
 };

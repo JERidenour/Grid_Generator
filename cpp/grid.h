@@ -16,7 +16,7 @@ class Grid : public Domain{
             Surface &boundWest, Surface &boundFront, Surface &boundBack);
 
         //constructor with single surface, interpolates downward
-        Grid(Surface &boundNorth, int Nz_in, double depth_in);
+       Grid(Surface &boundNorth, int Nz_in);
 
         Point getPoint(int i, int j, int k);
         void showCoordinates();
@@ -28,6 +28,7 @@ class Grid : public Domain{
 
         void setPoint(int i, int j, int k, Point p_in);
 
-        Surface createSouth(Surface &boundNorth, double depth_in);
+        Surface createSouth(Surface &boundNorth);
+        Surface createEast(Surface &boundNorth);
 };
 #endif

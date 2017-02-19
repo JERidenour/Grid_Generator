@@ -138,8 +138,7 @@ int main(){
 
 
     Nz = 10; //number of steps downward
-    double depth = 15; //depth of interpolation (meters)
-    Grid grid_new = Grid(surf_top, Nz, depth);
+    Grid grid_new = Grid(surf_top, Nz);
 
 
     return 0;

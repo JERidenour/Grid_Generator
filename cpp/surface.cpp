@@ -85,8 +85,8 @@ Surface::Surface(string filename, int Nx_in, int Ny_in){
 
         p1 = getPoint(i,(Ny-1)); //this is the line which runs across the top
         p2 = getPoint(i, 0);    // this is the line that runs across the bottom
-        p1.setZ(0);
-        p2.setZ(0);
+//        p1.setZ(0);
+//        p2.setZ(0);
         
         myNorth->setPoint(i, p1);
         mySouth->setPoint(i, p2);
@@ -96,8 +96,8 @@ Surface::Surface(string filename, int Nx_in, int Ny_in){
 
         p1 = getPoint((Nx-1), j); //this is the line which runs across the right 
         p2 = getPoint(0, j);    // this is the line that runs across the left 
-        p1.setZ(0);
-        p2.setZ(0);
+//        p1.setZ(0);
+//        p2.setZ(0);
         
         myEast->setPoint(j, p1);
         myWest->setPoint(j, p2);
