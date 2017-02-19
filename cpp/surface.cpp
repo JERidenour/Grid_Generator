@@ -48,9 +48,10 @@ Surface::Surface(string filename, int Nx_in, int Ny_in){
         //while ( getline (myfile,line) ) {
         for(int i=0; i<Nx; i++){
             for(int j=0; j<Ny; j++){
+
                 getline(myfile, line);
                 size_t pos = 0;
-                string token;
+
                 pos = line.find(delim);
                 xs = line.substr(0, pos);
                 line.erase(0, pos + delim.length());
@@ -80,8 +81,6 @@ Surface::Surface(string filename, int Nx_in, int Ny_in){
 
     Point p1, p2;
 
-    cout << "looping..." << endl;
-
     for(int i=0; i<Nx; i++){
 
         p1 = getPoint(i,(Ny-1)); //this is the line which runs across the top
@@ -103,16 +102,6 @@ Surface::Surface(string filename, int Nx_in, int Ny_in){
         myEast->setPoint(j, p1);
         myWest->setPoint(j, p2);
     }
-
-};
-
-Surface::~Surface(){
-
-    delete [] myNorth;
-    delete [] mySouth;
-    delete [] myEast;
-    delete [] myWest;
-    delete [] coordinates;
 
 };
 

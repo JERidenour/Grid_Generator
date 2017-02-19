@@ -28,6 +28,6 @@ class Grid : public Domain{
 
         void setPoint(int i, int j, int k, Point p_in);
 
-        Surface createSouth(Surface &boundNorth);
+        Surface createSouth(Surface &boundNorth, double depth_in);
 };
 #endif

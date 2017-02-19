@@ -99,7 +99,7 @@ void Line::printCoordinatesToFile(string filename){
     outFile.open(filename);
     for(int i=0; i<Nx; i++){
 
-        outFile << coordinates[i].pointAsString() << "\t";
+        outFile << coordinates[i].pointAsString() << "\n";
 
     }
 

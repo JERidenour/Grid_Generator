@@ -23,10 +23,11 @@ Grid::Grid(Surface &boundNorth, int Nz_in, double depth_in){
     Nx = boundNorth.getNx();
     Ny = boundNorth.getNy();
     Nz = Nz_in;
+    double depth = depth_in;
 
     coordinates = new Point[Nx*Ny*Nz];
 
-    Surface boundSouth = createSouth(boundNorth);       
+    Surface boundSouth = createSouth(boundNorth, depth);       
 
 //    interpolate(boundNorth, boundSouth, boundEast, boundWest, boundFront, boundBack);
 };
@@ -281,31 +282,44 @@ void Grid::setPoint(int i, int j, int k, Point p_in){
 
 };
 
-Surface Grid::createSouth(Surface &boundNorth){
+Surface Grid::createSouth(Surface &boundNorth, double depth_in){
 
     int norm = 2; //norm is 2 for (x,y)-plane
     double zConst = 0.0;
 
-    Point p =  boundNorth.getPoint(0,0);
-
-//    Point q = boundNorth.getNorth()->getPoint(0);
-//    q.showPoint();
     //get lines north, south, east, west
-//    Line bNorth = Line(Nx); 
+    Line bNorth = Line(Nx); 
+    Line bSouth = Line(Nx);
+    Line bEast = Line(Ny); 
+    Line bWest = Line(Ny);
   
+    for(int i=0; i<Nx; i++){
+        Point p = boundNorth.getNorth()->getPoint(i);
+        p.setZ(zConst);
+        bNorth.setPoint(i,p);
+        p = boundNorth.getSouth()->getPoint(i);
+        p.setZ(zConst);
+        bSouth.setPoint(i,p);
+    }    
 
-  
-//    for(int i=0; i<Nx; i++){
+    for(int j=0; j<Ny; j++){
+        Point p = boundNorth.getEast()->getPoint(j);
+        p.setZ(zConst);
+        bEast.setPoint(j,p);
+        p = boundNorth.getWest()->getPoint(j);
+        p.setZ(zConst);
+        bWest.setPoint(j,p);
+    }    
 
-//        Point p = boundNorth.getNorth()->getPoint(i);
-//        p.setZ(zConst);
-//        bNorth.setPoint(i,p);
+    Surface testbottom = Surface(bNorth, bSouth, bEast, bWest, norm, zConst);
+    bNorth.printCoordinatesToFile("../viz/north_linetest.txt");
+    bSouth.printCoordinatesToFile("../viz/south_linetest.txt");
+    bEast.printCoordinatesToFile("../viz/east_linetest.txt");
+    bWest.printCoordinatesToFile("../viz/west_linetest.txt");
+    testbottom.printCoordinatesToFile("../viz/testbottom.txt");
+    boundNorth.printCoordinatesToFile("../viz/testtop.txt");
 
-//    }    
-
-//    bNorth.showCoordinates();
-
-//return Surface
+//return Surface(bNorth, bSouth, bEast, bWest, norm, zConst);
 
     return Surface();
 

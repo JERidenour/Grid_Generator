@@ -23,7 +23,7 @@ for i=0:(nx-1)
     end
 end
 
-col2 = repmat([0:1:(nx-1)],1,ny)';
+col2 = repmat([0:1:(ny-1)],1,nx)';
 
 col3 = reshape(Z, nx*ny, 1);
 
