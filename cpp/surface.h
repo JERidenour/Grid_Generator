@@ -17,6 +17,8 @@ class Surface : public Domain {
         //create a surface object from a suitably formatted text file
         Surface(std::string filename, int Nx_in, int Ny_in);
 
+        ~Surface();
+
         Point getPoint(int i, int j);
         int getNx();
         int getNy();

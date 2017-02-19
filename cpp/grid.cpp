@@ -6,7 +6,8 @@
 
 using namespace std;
 
-Grid::Grid(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, Surface &boundWest, Surface &boundFront, Surface &boundBack){
+Grid::Grid(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, 
+        Surface &boundWest, Surface &boundFront, Surface &boundBack){
 
     Nx = boundSouth.getNx();
     Ny = boundSouth.getNy();
@@ -17,17 +18,25 @@ Grid::Grid(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, Surface
     interpolate(boundNorth, boundSouth, boundEast, boundWest, boundFront, boundBack);
 };
 
-Grid::Grid(Surface &top){
+Grid::Grid(Surface &boundNorth, int Nz_in, double depth_in){
 
-    cout << "new constructor called" << endl;
+    Nx = boundNorth.getNx();
+    Ny = boundNorth.getNy();
+    Nz = Nz_in;
 
+    coordinates = new Point[Nx*Ny*Nz];
+
+    Surface boundSouth = createSouth(boundNorth);       
+
+//    interpolate(boundNorth, boundSouth, boundEast, boundWest, boundFront, boundBack);
 };
 
 Point Grid::getPoint(int i, int j, int k){
     return coordinates[i + Nx*j + k*Nx*Ny];
 };
 
-void Grid::interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, Surface &boundWest, Surface &boundFront, Surface &boundBack){
+void Grid::interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, 
+        Surface &boundWest, Surface &boundFront, Surface &boundBack){
 
     //allocate memory for help arrays:
     double * U_X;
@@ -211,9 +220,6 @@ void Grid::interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundE
         }
     }
 
-
-
-
     //release help array memory
     delete[] U_X; 
     delete[] V_X; 
@@ -272,5 +278,35 @@ void Grid::printCoordinatesToFile(string filename){
 void Grid::setPoint(int i, int j, int k, Point p_in){
 
     coordinates[i + j*Nx + k*Nx*Ny] = p_in;
+
+};
+
+Surface Grid::createSouth(Surface &boundNorth){
+
+    int norm = 2; //norm is 2 for (x,y)-plane
+    double zConst = 0.0;
+
+    Point p =  boundNorth.getPoint(0,0);
+
+//    Point q = boundNorth.getNorth()->getPoint(0);
+//    q.showPoint();
+    //get lines north, south, east, west
+//    Line bNorth = Line(Nx); 
+  
+
+  
+//    for(int i=0; i<Nx; i++){
+
+//        Point p = boundNorth.getNorth()->getPoint(i);
+//        p.setZ(zConst);
+//        bNorth.setPoint(i,p);
+
+//    }    
+
+//    bNorth.showCoordinates();
+
+//return Surface
+
+    return Surface();
 
 };

@@ -15,6 +15,8 @@ class Line : public Domain{
 
         //copy constructor
         Line(const Line& Line_in);
+
+        ~Line();
     
         //return point at index i
         Point getPoint(int i);

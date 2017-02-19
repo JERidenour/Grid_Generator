@@ -136,7 +136,10 @@ int main(){
     Surface surf_top = Surface("../topodata/OROdat.txt", Nx, Ny); 
     surf_top.printCoordinatesToFile("../viz/surf_top.txt");
 
-    Grid grid_new = Grid(surf_top);
+
+    Nz = 10; //number of steps downward
+    double depth = 15; //depth of interpolation (meters)
+    Grid grid_new = Grid(surf_top, Nz, depth);
 
 
     return 0;

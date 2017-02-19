@@ -28,6 +28,8 @@ Line::Line(const Line& Line_in){
     }
 };
 
+Line::~Line(){};
+
 Point Line::getPoint(int i){
 
     if( (i<Nx)&&(i>=0) ){

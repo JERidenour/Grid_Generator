@@ -71,7 +71,49 @@ Surface::Surface(string filename, int Nx_in, int Ny_in){
     }
 
   else cout << "Unable to open file"; 
+
+    //create the data members myNorth, etc
+    myNorth = new Line(Nx);
+    mySouth = new Line(Nx);
+    myEast = new Line(Ny);
+    myWest = new Line(Ny);
+
+    Point p1, p2;
+
+    cout << "looping..." << endl;
+
+    for(int i=0; i<Nx; i++){
+
+        p1 = getPoint(i,(Ny-1)); //this is the line which runs across the top
+        p2 = getPoint(i, 0);    // this is the line that runs across the bottom
+        p1.setZ(0);
+        p2.setZ(0);
+        
+        myNorth->setPoint(i, p1);
+        mySouth->setPoint(i, p2);
+    }
     
+    for(int j=0; j<Ny; j++){
+
+        p1 = getPoint(j,(Nx-1)); //this is the line which runs across the right 
+        p2 = getPoint(j, 0);    // this is the line that runs across the left 
+        p1.setZ(0);
+        p2.setZ(0);
+        
+        myEast->setPoint(j, p1);
+        myWest->setPoint(j, p2);
+    }
+
+};
+
+Surface::~Surface(){
+
+    delete [] myNorth;
+    delete [] mySouth;
+    delete [] myEast;
+    delete [] myWest;
+    delete [] coordinates;
+
 };
 
 Point Surface::getPoint(int i, int j){
