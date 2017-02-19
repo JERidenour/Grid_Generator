@@ -135,7 +135,8 @@ int main(){
     Ny = 50;
     Surface surf_top = Surface("../topodata/OROdat.txt", Nx, Ny); 
     surf_top.printCoordinatesToFile("../viz/surf_top.txt");
-    cout << "done!" << endl;
+
+    Grid grid_new = Grid(surf_top);
 
 
     return 0;

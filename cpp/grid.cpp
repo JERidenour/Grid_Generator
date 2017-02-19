@@ -17,6 +17,12 @@ Grid::Grid(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, Surface
     interpolate(boundNorth, boundSouth, boundEast, boundWest, boundFront, boundBack);
 };
 
+Grid::Grid(Surface &top){
+
+    cout << "new constructor called" << endl;
+
+};
+
 Point Grid::getPoint(int i, int j, int k){
     return coordinates[i + Nx*j + k*Nx*Ny];
 };
@@ -25,50 +31,49 @@ void Grid::interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundE
 
     //allocate memory for help arrays:
     double * U_X;
-    U_X = new double[Nx*Ny*Nz];
     double * V_X;
-    V_X  = new double[Nx*Ny*Nz];
     double * W_X;
-    W_X  = new double[Nx*Ny*Nz];
     double * UW_X;
-    UW_X  = new double[Nx*Ny*Nz];
     double * UV_X;
-    UV_X  = new double[Nx*Ny*Nz];
     double * VW_X;
-    VW_X  = new double[Nx*Ny*Nz];
     double * UVW_X;
-    UVW_X  = new double[Nx*Ny*Nz];
-
     double * U_Y;
-    U_Y = new double[Nx*Ny*Nz];
     double * V_Y;
-    V_Y  = new double[Nx*Ny*Nz];
     double * W_Y;
-    W_Y  = new double[Nx*Ny*Nz];
     double * UW_Y;
-    UW_Y  = new double[Nx*Ny*Nz];
     double * UV_Y;
-    UV_Y  = new double[Nx*Ny*Nz];
     double * VW_Y;
-    VW_Y  = new double[Nx*Ny*Nz];
     double * UVW_Y;
-    UVW_Y  = new double[Nx*Ny*Nz];
-
     double * U_Z;
-    U_Z = new double[Nx*Ny*Nz];
     double * V_Z;
-    V_Z  = new double[Nx*Ny*Nz];
     double * W_Z;
-    W_Z  = new double[Nx*Ny*Nz];
     double * UW_Z;
-    UW_Z  = new double[Nx*Ny*Nz];
     double * UV_Z;
-    UV_Z  = new double[Nx*Ny*Nz];
     double * VW_Z;
-    VW_Z  = new double[Nx*Ny*Nz];
     double * UVW_Z;
-    UVW_Z  = new double[Nx*Ny*Nz];
 
+
+    U_X = new double[Nx*Ny*Nz];
+    V_X  = new double[Nx*Ny*Nz];
+    W_X  = new double[Nx*Ny*Nz];
+    UW_X  = new double[Nx*Ny*Nz];
+    UV_X  = new double[Nx*Ny*Nz];
+    VW_X  = new double[Nx*Ny*Nz];
+    UVW_X  = new double[Nx*Ny*Nz];
+    U_Y = new double[Nx*Ny*Nz];   
+    V_Y  = new double[Nx*Ny*Nz];
+    W_Y  = new double[Nx*Ny*Nz];
+    UW_Y  = new double[Nx*Ny*Nz];
+    UV_Y  = new double[Nx*Ny*Nz];
+    VW_Y  = new double[Nx*Ny*Nz];
+    UVW_Y  = new double[Nx*Ny*Nz];
+    U_Z = new double[Nx*Ny*Nz];
+    V_Z  = new double[Nx*Ny*Nz];   
+    W_Z  = new double[Nx*Ny*Nz];   
+    UW_Z  = new double[Nx*Ny*Nz];
+    UV_Z  = new double[Nx*Ny*Nz];
+    VW_Z  = new double[Nx*Ny*Nz];
+    UVW_Z  = new double[Nx*Ny*Nz];
 
     for(int i=0; i<Nx; i++){
         for(int j=0; j<Ny; j++){

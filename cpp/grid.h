@@ -12,14 +12,19 @@ class Grid : public Domain{
         Grid() : Domain(){};
     
         //constructor with six surface elements
-        Grid(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, Surface &boundWest, Surface &boundFront, Surface &boundBack);
+        Grid(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, 
+            Surface &boundWest, Surface &boundFront, Surface &boundBack);
 
-    Point getPoint(int i, int j, int k);
-    void showCoordinates();
-    void printCoordinatesToFile(std::string filename);
+        //constructor with single surface, interpolates downward
+        Grid(Surface &top);
+
+        Point getPoint(int i, int j, int k);
+        void showCoordinates();
+        void printCoordinatesToFile(std::string filename);
 
     private:
-        void interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, Surface &boundWest, Surface &boundFront, Surface &boundBack);
+        void interpolate(Surface &boundNorth, Surface &boundSouth, Surface &boundEast, 
+            Surface &boundWest, Surface &boundFront, Surface &boundBack);
 
         void setPoint(int i, int j, int k, Point p_in);
 };
