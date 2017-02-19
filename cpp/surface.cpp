@@ -94,8 +94,8 @@ Surface::Surface(string filename, int Nx_in, int Ny_in){
     
     for(int j=0; j<Ny; j++){
 
-        p1 = getPoint(j,(Nx-1)); //this is the line which runs across the right 
-        p2 = getPoint(j, 0);    // this is the line that runs across the left 
+        p1 = getPoint((Nx-1), j); //this is the line which runs across the right 
+        p2 = getPoint(0, j);    // this is the line that runs across the left 
         p1.setZ(0);
         p2.setZ(0);
         

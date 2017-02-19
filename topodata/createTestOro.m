@@ -25,8 +25,11 @@ end
 
 col2 = repmat([0:1:(ny-1)],1,nx)';
 
-col3 = reshape(Z, nx*ny, 1);
+col3 = reshape(Z', nx*ny, 1);
 
 M = [col1';col2';col3']';
 
 dlmwrite('OROdat.txt', M, '\t')
+
+M = dlmread('OROdat.txt', '\t');
+plot3(M(:,1), M(:,2), M(:,3), 'b*')
